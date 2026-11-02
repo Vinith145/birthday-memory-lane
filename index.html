@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Lane · 29th Birthday</title>
+    <style>
+        /* ----- GLOBAL RESET & ROMANTIC VINTAGE BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fdf2ec; /* soft rose cream */
+            background-image: 
+                radial-gradient(circle at 20% 30%, #fff5f0 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, #fce4d6 0%, transparent 50%),
+                linear-gradient(180deg, #fef8f4 0%, #f5dfd2 100%);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1.5rem 1rem 4rem;
+            position: relative;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        /* soft romantic glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -10%;
+            right: -10%;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(255, 200, 180, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* subtle vintage grain */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="200" height="200" filter="url(%23noise)" opacity="0.04"/></svg>');
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ----- MAIN WRAPPER ----- */
+        .memory-lane {
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* header */
+        .birthday-header {
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+
+        .birthday-header h1 {
+            font-size: 2.4rem;
+            font-weight: normal;
+            letter-spacing: 2px;
+            color: #6b3a4a;
+            text-shadow: 0 2px 0 rgba(255, 255, 255, 0.6), 0 4px 12px rgba(180, 100, 100, 0.15);
+        }
+
+        .birthday-header h1 span {
+            font-weight: bold;
+            color: #c47a7a;
+            text-shadow: 0 0 20px rgba(255, 180, 180, 0.6);
+        }
+
+        .birthday-header .sub {
+            font-size: 0.95rem;
+            color: #8a6a6a;
+            margin-top: 0.2rem;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* ============================================================ */
+        /* ========== BOOK WRAPPER ==================================== */
+        /* ============================================================ */
+        .book-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .book {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            background: #2a1a1a;
+            background-image: linear-gradient(135deg, #2a1a1a, #3d2626);
+            border-radius: 12px 16px 16px 12px;
+            box-shadow: 
+                0 20px 40px -10px rgba(60, 30, 30, 0.5),
+                0 0 0 1px #5a3a3a,
+                inset 0 0 60px rgba(100, 60, 60, 0.15);
+            overflow: visible;
+            min-height: 520px;
+        }
+
+        /* spiral binding along the left edge */
+        .book::before {
+            content: '';
+            position: absolute;
+            left: -16px;
+            top: 20px;
+            bottom: 20px;
+            width: 32px;
+            background: repeating-linear-gradient(
+                to bottom,
+                #8a6a6a 0px,
+                #8a6a6a 8px,
+                #b89a9a 8px,
+                #b89a9a 16px
+            );
+            border-radius: 16px 0 0 16px;
+            box-shadow: 
+                inset 0 0 8px rgba(0,0,0,0.2), 
+                -4px 0 8px rgba(0,0,0,0.15);
+            z-index: 10;
+            mask-image: radial-gradient(circle at 16px 16px, transparent 6px, #000 6px);
+            -webkit-mask-image: radial-gradient(circle at 16px 16px, transparent 6px, #000 6px);
+            mask-size: 32px 32px;
+            -webkit-mask-size: 32px 32px;
+            mask-repeat: repeat-y;
+            -webkit-mask-repeat: repeat-y;
+        }
+
+        .book::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 10px;
+            bottom: 10px;
+            width: 8px;
+            background: linear-gradient(90deg, transparent, #5a3a3a, transparent);
+            border-radius: 4px;
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .book-highlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(180deg, rgba(50, 25, 25, 0.4), transparent);
+            border-radius: 12px 16px 0 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* ---------- COVER PAGE (Front) ---------- */
+        .cover-page {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 3rem 3rem 4rem;
+            position: relative;
+            z-index: 3;
+            min-height: 520px;
+            width: 100%;
+            background: #2a1a1a;
+            background-image: linear-gradient(135deg, #2a1a1a, #3d2626);
+            border-radius: 0 16px 16px 0;
+            gap: 3rem;
+        }
+
+        .cover-quote-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding-bottom: 2rem;
+            height: 100%;
+        }
+
+        .cover-quote {
+            text-align: left;
+            max-width: 380px;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .cover-quote .highlight {
+            font-size: 1.7rem;
+            font-style: italic;
+            color: #f5e6e0;
+            line-height: 1.5;
+            font-family: 'Georgia', serif;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .cover-quote .highlight::before {
+            content: '“';
+            font-size: 3.5rem;
+            color: #c47a7a;
+            position: absolute;
+            top: -25px;
+            left: -25px;
+            opacity: 0.7;
+            font-family: 'Georgia', serif;
+        }
+
+        .cover-quote .highlight::after {
+            content: '”';
+            font-size: 3.5rem;
+            color: #c47a7a;
+            position: absolute;
+            bottom: -40px;
+            right: -15px;
+            opacity: 0.7;
+            font-family: 'Georgia', serif;
+        }
+
+        .cover-quote .tagline {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: #b89a9a;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', sans-serif;
+            padding-left: 0.2rem;
+        }
+
+        .cover-photo-side {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .cover-photo-frame {
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 3 / 4;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 
+                0 15px 35px -5px rgba(0, 0, 0, 0.6),
+                0 0 0 10px #3d2626,
+                0 0 0 12px #8a6a6a;
+            background: #3d2626;
+            position: relative;
+            transform: rotate(1deg);
+            transition: transform 0.3s ease;
+        }
+
+        .cover-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: sepia(0.15) contrast(1.05) brightness(0.95);
+        }
+
+        /* ---------- INNER PAGES ---------- */
+        .inner-pages {
+            position: relative;
+            width: 100%;
+            min-height: 520px;
+            display: none;
+            flex-direction: row;
+            z-index: 3;
+            border-radius: 0 16px 16px 0;
+            overflow: hidden;
+            background: #2a1a1a;
+            transition: filter 0.4s ease, opacity 0.4s ease;
+        }
+
+        .inner-pages.active {
+            display: flex;
+        }
+
+        .blur-out {
+            filter: blur(12px);
+            opacity: 0.4;
+        }
+
+        .fade-in {
+            animation: fadeInPage 0.5s ease forwards;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0.5; filter: blur(4px); }
+            to { opacity: 1; filter: blur(0); }
+        }
+
+        .page-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            background: #fdf2ec;
+            background-image: linear-gradient(135deg, #fff8f4, #f5dfd2);
+            position: relative;
+            overflow: hidden;
+            border-right: 1px solid #e8d5c8;
+            cursor: pointer;
+        }
+
+        .photo-full {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            display: block;
+            filter: sepia(0.1) contrast(1.02);
+            transition: filter 0.4s, transform 0.4s;
+        }
+
+        .page-left:hover .photo-full {
+            filter: sepia(0) contrast(1.05);
+            transform: scale(1.02);
+        }
+
+        .photo-hint-overlay {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(60, 30, 30, 0.65);
+            color: #f5e6e0;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', sans-serif;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            backdrop-filter: blur(4px);
+            white-space: nowrap;
+            z-index: 5;
+        }
+
+        .page-left:hover .photo-hint-overlay {
+            opacity: 1;
+        }
+
+        .page-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 2rem 2rem 1.5rem;
+            background: #fdf2ec;
+            background-image: linear-gradient(135deg, #f5dfd2, #fff8f4);
+            position: relative;
+            text-align: center;
+        }
+
+        .inner-pages::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            background: linear-gradient(180deg, #d4b8b0, #c4a098, #d4b8b0);
+            border-radius: 4px;
+            z-index: 5;
+            box-shadow: 0 0 10px rgba(160, 120, 120, 0.2);
+        }
+
+        .quote-number {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #c47a7a;
+            margin-bottom: 1rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .quote-text {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #6b3a4a;
+            font-style: italic;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            position: relative;
+            padding: 0 0.5rem;
+            text-shadow: 0 2px 8px rgba(200, 150, 150, 0.15);
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            font-size: 2.2rem;
+            color: #d4b8b0;
+            font-family: 'Georgia', serif;
+            position: absolute;
+            line-height: 1;
+            opacity: 0.7;
+        }
+
+        .quote-text::before {
+            content: '“';
+            top: -12px;
+            left: -8px;
+        }
+
+        .quote-text::after {
+            content: '”';
+            bottom: -25px;
+            right: -8px;
+        }
+
+        .quote-date {
+            margin-top: 1.2rem;
+            font-size: 0.75rem;
+            color: #b89a9a;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* ---------- BACK COVER PAGE (Closing) ---------- */
+        .back-cover-page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem 3rem 4rem;
+            position: relative;
+            z-index: 3;
+            min-height: 520px;
+            width: 100%;
+            background: #2a1a1a;
+            background-image: linear-gradient(135deg, #2a1a1a, #3d2626);
+            border-radius: 0 16px 16px 0;
+            text-align: center;
+            transition: filter 0.4s ease, opacity 0.4s ease;
+        }
+
+        .back-cover-page.active {
+            display: flex;
+        }
+
+        .back-cover-content {
+            max-width: 450px;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .back-cover-ornament {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #c47a7a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: #c47a7a;
+            font-size: 1.5rem;
+            box-shadow: 0 0 20px rgba(196, 122, 122, 0.2);
+        }
+
+        .back-cover-quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #f5e6e0;
+            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .back-cover-quote::before {
+            content: '“';
+            font-size: 3.5rem;
+            color: #c47a7a;
+            position: absolute;
+            top: -30px;
+            left: -20px;
+            opacity: 0.6;
+            font-family: 'Georgia', serif;
+        }
+
+        .back-cover-quote::after {
+            content: '”';
+            font-size: 3.5rem;
+            color: #c47a7a;
+            position: absolute;
+            bottom: -50px;
+            right: -20px;
+            opacity: 0.6;
+            font-family: 'Georgia', serif;
+        }
+
+        .back-cover-subtext {
+            margin-top: 2.5rem;
+            font-size: 0.9rem;
+            color: #b89a9a;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* ---------- NAVIGATION ---------- */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(60, 30, 30, 0.85);
+            border: 1px solid #8a6a6a;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #e8d5c8;
+            cursor: pointer;
+            z-index: 200;
+            transition: all 0.2s ease;
+            user-select: none;
+            backdrop-filter: blur(4px);
+        }
+
+        .nav-arrow:hover {
+            background: #3d2626;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+            transform: translateY(-50%) scale(1.05);
+            color: #fff8f4;
+        }
+
+        .nav-arrow:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .nav-arrow.left {
+            left: -22px;
+        }
+
+        .nav-arrow.right {
+            right: -22px;
+        }
+
+        .nav-arrow.hidden {
+            display: none;
+        }
+
+        /* ---------- PASSCODE LOCK (Vintage Seal) ---------- */
+        .passcode-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(20, 10, 10, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .passcode-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .passcode-card {
+            background: #fdf2ec;
+            background-image: linear-gradient(135deg, #fff8f4, #f5dfd2);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                0 0 0 1px #d4b8b0,
+                inset 0 0 40px rgba(200, 160, 150, 0.1);
+            position: relative;
+            transform: translateY(20px);
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popIn {
+            to { transform: translateY(0); }
+        }
+
+        /* Decorative wax seal on top */
+        .passcode-seal {
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, #c47a7a, #8a4a4a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -60px auto 1.5rem;
+            box-shadow: 
+                0 8px 15px rgba(0,0,0,0.3),
+                inset 0 -4px 8px rgba(0,0,0,0.3),
+                inset 0 4px 8px rgba(255,255,255,0.2);
+            color: #fdf2ec;
+            font-size: 1.8rem;
+            border: 2px dashed #e8d5c8;
+            position: relative;
+        }
+
+        .passcode-seal::after {
+            content: '';
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .passcode-title {
+            font-size: 1.4rem;
+            color: #6b3a4a;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .passcode-sub {
+            font-size: 0.85rem;
+            color: #b89a9a;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .passcode-input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .passcode-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border-radius: 30px;
+            border: 1px solid #d4b8b0;
+            background: rgba(255, 255, 255, 0.7);
+            font-family: 'Georgia', serif;
+            font-size: 1.1rem;
+            color: #6b3a4a;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .passcode-input:focus {
+            border-color: #c47a7a;
+            box-shadow: 0 0 15px rgba(196, 122, 122, 0.3);
+            background: #fff;
+        }
+
+        .passcode-btn {
+            background: #c47a7a;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(196, 122, 122, 0.4);
+            width: 100%;
+        }
+
+        .passcode-btn:hover {
+            background: #a05a5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(196, 122, 122, 0.5);
+        }
+
+        .passcode-error {
+            color: #b84a4a;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            font-family: 'Segoe UI', sans-serif;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .passcode-error.show {
+            opacity: 1;
+        }
+
+        /* Shake animation for wrong password */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+            20%, 40%, 60%, 80% { transform: translateX(8px); }
+        }
+
+        .shake {
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        /* ---------- MUSIC PLAYER ---------- */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(45, 25, 25, 0.92);
+            backdrop-filter: blur(10px);
+            padding: 0.7rem 1.3rem 0.7rem 1.1rem;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.4), 0 0 0 1px #8a6a6a;
+            z-index: 999;
+            border: 1px solid #8a6a6a;
+        }
+
+        .music-player button {
+            background: #8a6a6a;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+            color: #f5e6e0;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .music-player button:hover {
+            transform: scale(1.05);
+            background: #a07a7a;
+        }
+
+        .music-player .track-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            max-width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #d4b8b0;
+            font-style: italic;
+            font-family: 'Georgia', serif;
+        }
+
+        /* ============================================================ */
+        /* ========== INSTAGRAM STORY OVERLAY ========================= */
+        /* ============================================================ */
+        .story-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .story-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .story-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 85vh;
+            max-height: 720px;
+            background: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(200, 120, 120, 0.15);
+            display: flex;
+            flex-direction: column;
+            animation: storyZoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        }
+
+        @keyframes storyZoomIn {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .story-progress-bars {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            display: flex;
+            gap: 4px;
+            z-index: 20;
+        }
+
+        .story-progress-bar {
+            flex: 1;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .story-progress-bar.active .fill {
+            background: #fff;
+            width: 100%;
+            animation: fillBar 5s linear forwards;
+        }
+
+        @keyframes fillBar {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        .story-header {
+            position: absolute;
+            top: 28px;
+            left: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 20;
+        }
+
+        .story-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #8a6a6a, #c47a7a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .story-name {
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+
+        .story-close {
+            position: absolute;
+            top: 26px;
+            right: 14px;
+            z-index: 25;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.4);
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+            line-height: 1;
+        }
+
+        .story-close:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .story-image-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+        }
+
+        .story-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            animation: storyImgReveal 0.6s ease both;
+        }
+
+        @keyframes storyImgReveal {
+            from { opacity: 0; transform: scale(1.05); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .story-quote-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3rem 1.5rem 2.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+            color: #fff;
+            z-index: 15;
+            animation: quoteFadeUp 0.7s ease 0.3s both;
+        }
+
+        @keyframes quoteFadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .story-quote-text {
+            font-size: 1.3rem;
+            line-height: 1.5;
+            font-style: italic;
+            font-family: 'Georgia', serif;
+            color: #f5e6e0;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1rem;
+            border-left: 3px solid #c47a7a;
+        }
+
+        .story-quote-date {
+            font-size: 0.75rem;
+            color: #d4b8b0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.6rem;
+            font-family: 'Segoe UI', sans-serif;
+            padding-left: 1rem;
+        }
+
+        /* ---------- RESPONSIVE (MOBILE) ---------- */
+        @media (max-width: 750px) {
+            body {
+                padding: 1rem 0.5rem 5rem;
+            }
+
+            .book-wrapper {
+                max-width: 100%;
+            }
+
+            .birthday-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .birthday-header .sub {
+                font-size: 0.85rem;
+            }
+
+            .book {
+                min-height: 560px;
+            }
+
+            .cover-page {
+                flex-direction: column-reverse;
+                padding: 2rem 1.5rem 2rem 2.5rem;
+                min-height: 540px;
+                gap: 2rem;
+            }
+
+            .cover-quote-side {
+                padding-bottom: 0;
+                align-items: center;
+                width: 100%;
+            }
+
+            .cover-quote {
+                text-align: center;
+                padding-left: 0;
+                padding: 0 0.5rem;
+            }
+
+            .cover-quote .highlight {
+                font-size: 1.3rem;
+            }
+
+            .cover-quote .highlight::before {
+                top: -15px;
+                left: -10px;
+                font-size: 2.5rem;
+            }
+
+            .cover-quote .highlight::after {
+                bottom: -30px;
+                right: -5px;
+                font-size: 2.5rem;
+            }
+
+            .cover-quote .tagline {
+                font-size: 0.75rem;
+            }
+
+            .cover-photo-side {
+                width: 100%;
+            }
+
+            .cover-photo-frame {
+                max-width: 220px;
+            }
+
+            .inner-pages {
+                flex-direction: column;
+                min-height: 560px;
+            }
+
+            .page-left {
+                flex: 0 0 55%;
+                min-height: 300px;
+                border-right: none;
+                border-bottom: 1px solid #e8d5c8;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .page-right {
+                flex: 1;
+                padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+            }
+
+            .inner-pages::after {
+                display: none;
+            }
+
+            .quote-text {
+                font-size: 1.1rem;
+            }
+
+            .nav-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+
+            .nav-arrow.left {
+                left: -10px;
+            }
+
+            .nav-arrow.right {
+                right: -10px;
+            }
+
+            .book::before {
+                left: -10px;
+                width: 20px;
+                mask-size: 20px 20px;
+                -webkit-mask-size: 20px 20px;
+                mask-image: radial-gradient(circle at 10px 10px, transparent 4px, #000 4px);
+                -webkit-mask-image: radial-gradient(circle at 10px 10px, transparent 4px, #000 4px);
+            }
+
+            .story-container {
+                border-radius: 0;
+                max-height: 100vh;
+                height: 100vh;
+                max-width: 100%;
+            }
+
+            .story-quote-text {
+                font-size: 1.1rem;
+            }
+
+            .music-player {
+                bottom: 12px;
+                right: 12px;
+                padding: 0.5rem 0.9rem 0.5rem 0.8rem;
+            }
+
+            .music-player .track-label {
+                display: none;
+            }
+
+            .back-cover-page {
+                padding: 2rem 1.5rem 2rem 2.5rem;
+                min-height: 540px;
+            }
+
+            .back-cover-quote {
+                font-size: 1.4rem;
+            }
+
+            .back-cover-quote::before {
+                top: -20px;
+                left: -10px;
+                font-size: 2.5rem;
+            }
+
+            .back-cover-quote::after {
+                bottom: -35px;
+                right: -10px;
+                font-size: 2.5rem;
+            }
+
+            .passcode-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .passcode-seal {
+                margin-top: -50px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .birthday-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .book {
+                min-height: 520px;
+            }
+
+            .page-left {
+                flex: 0 0 50%;
+                min-height: 260px;
+            }
+
+            .page-right {
+                padding: 1.2rem 1rem;
+            }
+
+            .quote-text {
+                font-size: 1rem;
+            }
+
+            .quote-number {
+                font-size: 0.6rem;
+            }
+
+            .quote-date {
+                font-size: 0.65rem;
+            }
+
+            .cover-photo-frame {
+                max-width: 180px;
+            }
+
+            .cover-quote .highlight {
+                font-size: 1.1rem;
+            }
+
+            .nav-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+
+            .nav-arrow.left {
+                left: -6px;
+            }
+
+            .nav-arrow.right {
+                right: -6px;
+            }
+
+            .back-cover-quote {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- ========== PASSCODE LOCK OVERLAY =========================== -->
+    <!-- ============================================================ -->
+    <div class="passcode-overlay" id="passcodeOverlay">
+        <div class="passcode-card" id="passcodeCard">
+            <div class="passcode-seal">🔒</div>
+            <div class="passcode-title">A Little Secret...</div>
+            <div class="passcode-sub">Enter the magic word to open</div>
+            
+            <div class="passcode-input-group">
+                <input type="password" id="passcodeInput" class="passcode-input" placeholder="Passcode" autocomplete="off" spellcheck="false">
+            </div>
+            
+            <button class="passcode-btn" id="passcodeSubmit">Unlock</button>
+            
+            <div class="passcode-error" id="passcodeError">Not quite... try again, my love.</div>
+        </div>
+    </div>
+
+    <div class="memory-lane">
+        <!-- HEADER -->
+        <div class="birthday-header">
+            <h1>Happy <span>29th</span> Birthday</h1>
+            <div class="sub">✦ a spiral book of your beauty ✦</div>
+        </div>
+
+        <!-- ========== SPIRAL BOOK ========== -->
+        <div class="book-wrapper">
+            <div class="book">
+                <div class="book-highlight"></div>
+
+                <!-- ---------- FRONT COVER PAGE ---------- -->
+                <div class="cover-page" id="coverPage">
+                    <div class="cover-quote-side">
+                        <div class="cover-quote">
+                            <div class="highlight">
+                                In a world full of ordinary, you are the most beautiful soul I have ever known.
+                            </div>
+                            <div class="tagline">— a celebration of you —</div>
+                        </div>
+                    </div>
+                    <div class="cover-photo-side">
+                        <!-- 👇 FRONT COVER PHOTO -->
+                        <div class="cover-photo-frame">
+                            <img src="./0Cover.jpg" alt="Cover photo">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ---------- INNER PAGES ---------- -->
+                <div class="inner-pages" id="innerPages">
+                    <div class="page-left" id="pageLeft"></div>
+                    <div class="page-right" id="pageRight"></div>
+                </div>
+
+                <!-- ---------- BACK COVER PAGE ---------- -->
+                <div class="back-cover-page" id="backCoverPage">
+                    <div class="back-cover-content">
+                        <div class="back-cover-ornament">✦</div>
+                        <div class="back-cover-quote">
+                            May your life unfold exactly as beautifully as you dream it. Here's to you, and to all the magic still to come.
+                        </div>
+                        <div class="back-cover-subtext">— the end of this chapter, the start of everything —</div>
+                    </div>
+                </div>
+
+                <!-- nav arrows -->
+                <div class="nav-arrow left" id="prevBtn" title="Previous">‹</div>
+                <div class="nav-arrow right hidden" id="nextBtn" title="Next">›</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ========== INSTAGRAM STORY OVERLAY ========================= -->
+    <!-- ============================================================ -->
+    <div class="story-overlay" id="storyOverlay">
+        <div class="story-container">
+            <div class="story-progress-bars">
+                <div class="story-progress-bar active"><div class="fill"></div></div>
+            </div>
+            <div class="story-header">
+                <div class="story-avatar">🌹</div>
+                <div class="story-name">Her Beauty <span>· 29</span></div>
+            </div>
+            <button class="story-close" id="storyClose" aria-label="Close story">×</button>
+            <div class="story-image-wrapper">
+                <img id="storyImage" src="" alt="Story photo">
+            </div>
+            <div class="story-quote-overlay">
+                <div class="story-quote-text" id="storyQuoteText">Quote</div>
+                <div class="story-quote-date" id="storyQuoteDate">Date</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MUSIC PLAYER -->
+    <div class="music-player">
+        <button id="playPauseBtn" aria-label="Play or pause music">▶</button>
+        <span class="track-label" id="trackLabel">her song</span>
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        (function() {
+            /* ============================================================ */
+            /* ========== DATA: 29 PHOTOS + QUOTES ======================== */
+            /* ============================================================ */
+            const photos = [
+                { img: "./Photo1.jpg", quote: "Your eyes hold galaxies I could get lost in forever.", date: "a gaze that never fades" },
+                { img: "./Photo2.jpg", quote: "The sunlight falls in love with your smile every morning.", date: "golden hour, always" },
+                { img: "./Photo3.jpg", quote: "You move like poetry — every line is a curve of grace.", date: "effortless elegance" },
+                { img: "./Photo4.jpg", quote: "Your laugh is the softest song my heart has ever known.", date: "a melody I replay" },
+                { img: "./Photo5.jpg", quote: "The way you blush — even roses ask for your secret.", date: "softest petal" },
+                { img: "./Photo6.jpg", quote: "Every strand of your hair catches the light like spun gold.", date: "golden threads" },
+                { img: "./Photo7.jpg", quote: "Your presence turns ordinary moments into art.", date: "living masterpiece" },
+                { img: "./Photo8.jpg", quote: "Your skin holds the warmth of a thousand sunsets.", date: "sun-kissed glow" },
+                { img: "./Photo9.jpg", quote: "Your beauty isn't just seen — it's felt, like a warm breeze.", date: "a gentle touch" },
+                { img: "./Photo10.jpg", quote: "You are the reason poetry exists — every poet's dream.", date: "unwritten sonnet" },
+                { img: "./Photo11.jpg", quote: "In a world of ordinary, you are the golden exception.", date: "rare & radiant" },
+                { img: "./Photo12.jpg", quote: "Your smile could melt the coldest winter into spring.", date: "eternal warmth" },
+                { img: "./Photo13.jpg", quote: "The stars are jealous of the light in your eyes.", date: "celestial beauty" },
+                { img: "./Photo14.jpg", quote: "Every curve of your face is a love letter to my heart.", date: "written in softness" },
+                { img: "./Photo15.jpg", quote: "You wear grace like a second skin — effortlessly.", date: "natural elegance" },
+                { img: "./Photo16.jpg", quote: "Your beauty is the kind that grows more stunning with time.", date: "aging like fine gold" },
+                { img: "./Photo17.jpg", quote: "The morning light bows to the softness of your face.", date: "dawn's rival" },
+                { img: "./Photo18.jpg", quote: "Your voice is honey — slow, warm, and impossible to forget.", date: "sweet resonance" },
+                { img: "./Photo19.jpg", quote: "You are the softest place my eyes have ever landed.", date: "gentle landing" },
+                { img: "./Photo20.jpg", quote: "Even the wind whispers your name with reverence.", date: "whispered beauty" },
+                { img: "./Photo21.jpg", quote: "Your eyes are the color of everything I've ever loved.", date: "home in a glance" },
+                { img: "./Photo22.jpg", quote: "You are the poem I never knew how to write.", date: "living verse" },
+                { img: "./Photo23.jpg", quote: "The way you carry yourself — like a queen in a fairy tale.", date: "regal grace" },
+                { img: "./Photo24.jpg", quote: "Your beauty is a quiet storm — gentle but unforgettable.", date: "soft thunder" },
+                { img: "./Photo25.jpg", quote: "I could spend forever tracing the light in your smile.", date: "forever's light" },
+                { img: "./Photo26.jpg", quote: "You are the golden hour that never ends.", date: "endless glow" },
+                { img: "./Photo27.jpg", quote: "Your reflection in the mirror must be the loveliest sight.", date: "mirror's favorite" },
+                { img: "./Photo28.jpg", quote: "Every angle of you is my favorite angle.", date: "perfectly you" },
+                { img: "./Photo29.jpg", quote: "Twenty-nine years of you — and still the most beautiful story.", date: "to be continued…" }
+            ];
+
+            /* ============================================================ */
+            /* ========== STATE ============================================ */
+            /* ============================================================ */
+            let currentIndex = -1; // -1 = front cover, 0..28 = inner pages, 29 = back cover
+            const totalInnerPages = photos.length;
+            let isAnimating = false;
+            let isUnlocked = false;
+
+            /* ============================================================ */
+            /* ========== DOM ELEMENTS ==================================== */
+            /* ============================================================ */
+            const coverPage = document.getElementById('coverPage');
+            const innerPages = document.getElementById('innerPages');
+            const backCoverPage = document.getElementById('backCoverPage');
+            const pageLeft = document.getElementById('pageLeft');
+            const pageRight = document.getElementById('pageRight');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            // Passcode Elements
+            const passcodeOverlay = document.getElementById('passcodeOverlay');
+            const passcodeCard = document.getElementById('passcodeCard');
+            const passcodeInput = document.getElementById('passcodeInput');
+            const passcodeSubmit = document.getElementById('passcodeSubmit');
+            const passcodeError = document.getElementById('passcodeError');
+
+            const storyOverlay = document.getElementById('storyOverlay');
+            const storyImage = document.getElementById('storyImage');
+            const storyQuoteText = document.getElementById('storyQuoteText');
+            const storyQuoteDate = document.getElementById('storyQuoteDate');
+            const storyClose = document.getElementById('storyClose');
+
+            /* ============================================================ */
+            /* ========== PASSCODE LOGIC ================================== */
+            /* ============================================================ */
+            
+            function checkPasscode() {
+                const value = passcodeInput.value.trim().toLowerCase();
+                
+                if (value === 'eskimo') {
+                    isUnlocked = true;
+                    passcodeOverlay.classList.add('hidden');
+                    nextBtn.classList.remove('hidden');
+                    
+                    if (audio.paused) {
+                        audio.play().catch(() => {});
+                    }
+                } else {
+                    passcodeError.classList.add('show');
+                    passcodeCard.classList.remove('shake');
+                    void passcodeCard.offsetWidth;
+                    passcodeCard.classList.add('shake');
+                    passcodeInput.value = '';
+                    passcodeInput.focus();
+                }
+            }
+
+            passcodeSubmit.addEventListener('click', checkPasscode);
+            passcodeInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkPasscode();
+                }
+            });
+
+            passcodeInput.addEventListener('input', () => {
+                passcodeError.classList.remove('show');
+            });
+
+            /* ============================================================ */
+            /* ========== RENDER FUNCTIONS ================================ */
+            /* ============================================================ */
+
+            function renderInnerPage(index) {
+                if (index < 0 || index >= totalInnerPages) return;
+                const data = photos[index];
+
+                pageLeft.innerHTML = `
+                    <img class="photo-full" src="${data.img}" alt="Her beauty ${index + 1}">
+                    <div class="photo-hint-overlay">tap for story ✦</div>
+                `;
+
+                pageRight.innerHTML = `
+                    <div class="quote-number">beauty nº${index + 1}</div>
+                    <div class="quote-text">${data.quote}</div>
+                    <div class="quote-date">${data.date}</div>
+                `;
+
+                pageLeft.addEventListener('click', function handler(e) {
+                    e.stopPropagation();
+                    openStory(data);
+                }, { once: true });
+            }
+
+            function renderPage() {
+                coverPage.style.display = 'none';
+                innerPages.classList.remove('active');
+                backCoverPage.classList.remove('active');
+
+                if (currentIndex === -1) {
+                    coverPage.style.display = 'flex';
+                } else if (currentIndex === totalInnerPages) {
+                    backCoverPage.classList.add('active');
+                } else {
+                    innerPages.classList.add('active');
+                    renderInnerPage(currentIndex);
+                }
+            }
+
+            /* ============================================================ */
+            /* ========== BLUR / FADE PAGE TRANSITION ===================== */
+            /* ============================================================ */
+
+            function changePage(index) {
+                if (!isUnlocked) return;
+                if (isAnimating) return;
+                if (index < -1 || index > totalInnerPages) return;
+                if (index === currentIndex) return;
+
+                isAnimating = true;
+
+                let activeContainer = null;
+                if (currentIndex === -1) activeContainer = coverPage;
+                else if (currentIndex === totalInnerPages) activeContainer = backCoverPage;
+                else activeContainer = innerPages;
+
+                if (activeContainer) {
+                    activeContainer.classList.add('blur-out');
+                }
+
+                setTimeout(() => {
+                    currentIndex = index;
+                    if (activeContainer) activeContainer.classList.remove('blur-out');
+                    renderPage();
+
+                    let newContainer = null;
+                    if (currentIndex === -1) newContainer = coverPage;
+                    else if (currentIndex === totalInnerPages) newContainer = backCoverPage;
+                    else newContainer = innerPages;
+
+                    if (newContainer) {
+                        newContainer.classList.remove('fade-in');
+                        void newContainer.offsetWidth;
+                        newContainer.classList.add('fade-in');
+                        
+                        setTimeout(() => {
+                            newContainer.classList.remove('fade-in');
+                        }, 500);
+                    }
+
+                    isAnimating = false;
+                }, 450);
+            }
+
+            function nextPage() {
+                if (!isUnlocked) return;
+                if (isAnimating) return;
+                if (currentIndex < totalInnerPages) {
+                    changePage(currentIndex + 1);
+                }
+            }
+
+            function prevPage() {
+                if (!isUnlocked) return;
+                if (isAnimating) return;
+                if (currentIndex > -1) {
+                    changePage(currentIndex - 1);
+                }
+            }
+
+            nextBtn.addEventListener('click', nextPage);
+            prevBtn.addEventListener('click', prevPage);
+
+            document.addEventListener('keydown', (e) => {
+                if (!isUnlocked) return;
+                if (storyOverlay.classList.contains('active')) return;
+                if (e.key === 'ArrowRight') nextPage();
+                if (e.key === 'ArrowLeft') prevPage();
+            });
+
+            /* ============================================================ */
+            /* ========== STORY OVERLAY =================================== */
+            /* ============================================================ */
+            function openStory(data) {
+                storyImage.src = data.img;
+                storyQuoteText.textContent = data.quote;
+                storyQuoteDate.textContent = data.date;
+
+                storyOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                const fill = document.querySelector('.story-progress-bar .fill');
+                if (fill) {
+                    fill.style.animation = 'none';
+                    void fill.offsetWidth;
+                    fill.style.animation = 'fillBar 5s linear forwards';
+                }
+            }
+
+            function closeStory() {
+                storyOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                const fill = document.querySelector('.story-progress-bar .fill');
+                if (fill) fill.style.animation = 'none';
+            }
+
+            storyClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeStory();
+            });
+
+            storyOverlay.addEventListener('click', (e) => {
+                if (e.target === storyOverlay) closeStory();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && storyOverlay.classList.contains('active')) {
+                    closeStory();
+                }
+            });
+
+            /* ============================================================ */
+            /* ========== MUSIC PLAYER ==================================== */
+            /* ============================================================ */
+            const audio = document.getElementById('bgMusic');
+            const playBtn = document.getElementById('playPauseBtn');
+            const trackLabel = document.getElementById('trackLabel');
+
+            function updateLabelFromSrc() {
+                if (audio && audio.querySelector('source')) {
+                    const src = audio.querySelector('source').src;
+                    if (src) {
+                        const filename = src.split('/').pop().split('.')[0];
+                        if (filename && filename.length < 20 && !filename.includes('SoundHelix')) {
+                            trackLabel.textContent = filename.replace(/_/g, ' ');
+                        } else {
+                            trackLabel.textContent = 'her song';
+                        }
+                    }
+                }
+            }
+            updateLabelFromSrc();
+
+            playBtn.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        playBtn.textContent = '❚❚';
+                        playBtn.setAttribute('aria-label', 'Pause music');
+                    }).catch(err => {
+                        console.warn('Playback failed:', err);
+                        playBtn.textContent = '▶';
+                    });
+                } else {
+                    audio.pause();
+                    playBtn.textContent = '▶';
+                    playBtn.setAttribute('aria-label', 'Play music');
+                }
+            });
+
+            audio.addEventListener('pause', function() {
+                playBtn.textContent = '▶';
+                playBtn.setAttribute('aria-label', 'Play music');
+            });
+
+            audio.addEventListener('play', function() {
+                playBtn.textContent = '❚❚';
+                playBtn.setAttribute('aria-label', 'Pause music');
+            });
+
+            /* ============================================================ */
+            /* ========== INIT ============================================ */
+            /* ============================================================ */
+            function init() {
+                currentIndex = -1;
+                renderPage();
+                setTimeout(() => passcodeInput.focus(), 500);
+            }
+
+            init();
+        })();
+    </script>
+</body>
+</html>
