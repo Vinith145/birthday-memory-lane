@@ -817,7 +817,6 @@
             display: flex;
             flex-direction: column;
             animation: storyZoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-            touch-action: pan-y; /* allows vertical scroll if needed, we intercept horizontal */
         }
 
         @keyframes storyZoomIn {
@@ -942,7 +941,7 @@
             color: #fff;
             z-index: 15;
             animation: quoteFadeUp 0.7s ease 0.3s both;
-            pointer-events: none; /* so clicks pass through to navigation zones */
+            pointer-events: none;
         }
 
         @keyframes quoteFadeUp {
@@ -984,6 +983,7 @@
         }
         .story-nav-zone.left { left: 0; }
         .story-nav-zone.right { right: 0; }
+
 
         /* ---------- RESPONSIVE (MOBILE) ---------- */
         @media (max-width: 750px) {
@@ -1335,35 +1335,35 @@
             /* ========== DATA: 29 PHOTOS + QUOTES ======================== */
             /* ============================================================ */
             const photos = [
-                { img: "./Photos/Photo1.jpeg", quote: "Your eyes hold galaxies I could get lost in forever.", date: "a gaze that never fades" },
-                { img: "./Photos/Photo2.jpeg", quote: "The sunlight falls in love with your smile every morning.", date: "golden hour, always" },
-                { img: "./Photos/Photo3.jpeg", quote: "You move like poetry — every line is a curve of grace.", date: "effortless elegance" },
-                { img: "./Photos/Photo4.jpeg", quote: "Your laugh is the softest song my heart has ever known.", date: "a melody I replay" },
-                { img: "./Photos/Photo5.jpeg", quote: "The way you blush — even roses ask for your secret.", date: "softest petal" },
-                { img: "./Photos/Photo6.jpeg", quote: "Every strand of your hair catches the light like spun gold.", date: "golden threads" },
-                { img: "./Photos/Photo7.jpeg", quote: "Your presence turns ordinary moments into art.", date: "living masterpiece" },
-                { img: "./Photos/Photo8.jpeg", quote: "Your skin holds the warmth of a thousand sunsets.", date: "sun-kissed glow" },
-                { img: "./Photos/Photo9.jpeg", quote: "Your beauty isn't just seen — it's felt, like a warm breeze.", date: "a gentle touch" },
-                { img: "./Photos/Photo10.jpeg", quote: "You are the reason poetry exists — every poet's dream.", date: "unwritten sonnet" },
-                { img: "./Photos/Photo11.jpeg", quote: "In a world of ordinary, you are the golden exception.", date: "rare & radiant" },
-                { img: "./Photos/Photo12.jpeg", quote: "Your smile could melt the coldest winter into spring.", date: "eternal warmth" },
-                { img: "./Photos/Photo13.jpeg", quote: "The stars are jealous of the light in your eyes.", date: "celestial beauty" },
-                { img: "./Photos/Photo14.jpeg", quote: "Every curve of your face is a love letter to my heart.", date: "written in softness" },
-                { img: "./Photos/Photo15.jpeg", quote: "You wear grace like a second skin — effortlessly.", date: "natural elegance" },
-                { img: "./Photos/Photo16.jpeg", quote: "Your beauty is the kind that grows more stunning with time.", date: "aging like fine gold" },
-                { img: "./Photos/Photo17.jpeg", quote: "The morning light bows to the softness of your face.", date: "dawn's rival" },
-                { img: "./Photos/Photo18.jpeg", quote: "Your voice is honey — slow, warm, and impossible to forget.", date: "sweet resonance" },
-                { img: "./Photos/Photo19.jpeg", quote: "You are the softest place my eyes have ever landed.", date: "gentle landing" },
-                { img: "./Photos/Photo20.jpeg", quote: "Even the wind whispers your name with reverence.", date: "whispered beauty" },
-                { img: "./Photos/Photo21.jpeg", quote: "Your eyes are the color of everything I've ever loved.", date: "home in a glance" },
-                { img: "./Photos/Photo22.jpeg", quote: "You are the poem I never knew how to write.", date: "living verse" },
-                { img: "./Photos/Photo23.jpeg", quote: "The way you carry yourself — like a queen in a fairy tale.", date: "regal grace" },
-                { img: "./Photos/Photo24.jpeg", quote: "Your beauty is a quiet storm — gentle but unforgettable.", date: "soft thunder" },
-                { img: "./Photos/Photo25.jpeg", quote: "I could spend forever tracing the light in your smile.", date: "forever's light" },
-                { img: "./Photos/Photo26.jpeg", quote: "You are the golden hour that never ends.", date: "endless glow" },
-                { img: "./Photos/Photo27.jpeg", quote: "Your reflection in the mirror must be the loveliest sight.", date: "mirror's favorite" },
-                { img: "./Photos/Photo28.jpeg", quote: "Every angle of you is my favorite angle.", date: "perfectly you" },
-                { img: "./Photos/Photo29.jpeg", quote: "Twenty-nine years of you — and still the most beautiful story.", date: "to be continued…" }
+                { img: "./Photos/Photos1.jpeg", quote: "Your eyes hold galaxies I could get lost in forever.", date: "a gaze that never fades" },
+                { img: "./Photos/Photos2.jpeg", quote: "The sunlight falls in love with your smile every morning.", date: "golden hour, always" },
+                { img: "./Photos/Photos3.jpeg", quote: "You move like poetry — every line is a curve of grace.", date: "effortless elegance" },
+                { img: "./Photos/Photos4.jpeg", quote: "Your laugh is the softest song my heart has ever known.", date: "a melody I replay" },
+                { img: "./Photos/Photos5.jpeg", quote: "The way you blush — even roses ask for your secret.", date: "softest petal" },
+                { img: "./Photos/Photos6.jpeg", quote: "Every strand of your hair catches the light like spun gold.", date: "golden threads" },
+                { img: "./Photos/Photos7.jpeg", quote: "Your presence turns ordinary moments into art.", date: "living masterpiece" },
+                { img: "./Photos/Photos8.jpeg", quote: "Your skin holds the warmth of a thousand sunsets.", date: "sun-kissed glow" },
+                { img: "./Photos/Photos9.jpeg", quote: "Your beauty isn't just seen — it's felt, like a warm breeze.", date: "a gentle touch" },
+                { img: "./Photos/Photos10.jpeg", quote: "You are the reason poetry exists — every poet's dream.", date: "unwritten sonnet" },
+                { img: "./Photos/Photos11.jpeg", quote: "In a world of ordinary, you are the golden exception.", date: "rare & radiant" },
+                { img: "./Photos/Photos12.jpeg", quote: "Your smile could melt the coldest winter into spring.", date: "eternal warmth" },
+                { img: "./Photos/Photos13.jpeg", quote: "The stars are jealous of the light in your eyes.", date: "celestial beauty" },
+                { img: "./Photos/Photos14.jpeg", quote: "Every curve of your face is a love letter to my heart.", date: "written in softness" },
+                { img: "./Photos/Photos15.jpeg", quote: "You wear grace like a second skin — effortlessly.", date: "natural elegance" },
+                { img: "./Photos/Photos16.jpeg", quote: "Your beauty is the kind that grows more stunning with time.", date: "aging like fine gold" },
+                { img: "./Photos/Photos17.jpeg", quote: "The morning light bows to the softness of your face.", date: "dawn's rival" },
+                { img: "./Photos/Photos18.jpeg", quote: "Your voice is honey — slow, warm, and impossible to forget.", date: "sweet resonance" },
+                { img: "./Photos/Photos19.jpeg", quote: "You are the softest place my eyes have ever landed.", date: "gentle landing" },
+                { img: "./Photos/Photos20.jpeg", quote: "Even the wind whispers your name with reverence.", date: "whispered beauty" },
+                { img: "./Photos/Photos21.jpeg", quote: "Your eyes are the color of everything I've ever loved.", date: "home in a glance" },
+                { img: "./Photos/Photos22.jpeg", quote: "You are the poem I never knew how to write.", date: "living verse" },
+                { img: "./Photos/Photos23.jpeg", quote: "The way you carry yourself — like a queen in a fairy tale.", date: "regal grace" },
+                { img: "./Photos/Photos24.jpeg", quote: "Your beauty is a quiet storm — gentle but unforgettable.", date: "soft thunder" },
+                { img: "./Photos/Photos25.jpeg", quote: "I could spend forever tracing the light in your smile.", date: "forever's light" },
+                { img: "./Photos/Photos26.jpeg", quote: "You are the golden hour that never ends.", date: "endless glow" },
+                { img: "./Photos/Photos27.jpeg", quote: "Your reflection in the mirror must be the loveliest sight.", date: "mirror's favorite" },
+                { img: "./Photos/Photos28.jpeg", quote: "Every angle of you is my favorite angle.", date: "perfectly you" },
+                { img: "./Photos/Photos29.jpeg", quote: "Twenty-nine years of you — and still the most beautiful story.", date: "to be continued…" }
             ];
 
             /* ============================================================ */
@@ -1373,7 +1373,9 @@
             const totalInnerPages = photos.length;
             let isAnimating = false;
             let isUnlocked = false;
-            let storyCurrentIndex = 0; // Tracks index within the story overlay
+            
+            let storyCurrentIndex = 0;
+            let storyTimer = null;
 
             /* ============================================================ */
             /* ========== DOM ELEMENTS ==================================== */
@@ -1551,7 +1553,7 @@
             });
 
             /* ============================================================ */
-            /* ========== STORY OVERLAY & SWIPE LOGIC ===================== */
+            /* ========== STORY OVERLAY & AUTO LOOP LOGIC ================= */
             /* ============================================================ */
             
             function updateStoryContent(index) {
@@ -1576,40 +1578,63 @@
                 storyImage.style.animation = 'storyImgReveal 0.6s ease both';
             }
 
+            function startStoryTimer() {
+                clearInterval(storyTimer);
+                storyTimer = setInterval(() => {
+                    // Loop logic: if at the last photo, go back to first
+                    if (storyCurrentIndex >= totalInnerPages - 1) {
+                        storyCurrentIndex = 0;
+                    } else {
+                        storyCurrentIndex++;
+                    }
+                    updateStoryContent(storyCurrentIndex);
+                }, 5000); // 5000ms = 5 seconds
+            }
+
             function openStory(index) {
                 storyCurrentIndex = index;
                 updateStoryContent(storyCurrentIndex);
                 
                 storyOverlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                
+                startStoryTimer(); // Start the auto-slide loop
             }
 
             function closeStory() {
                 storyOverlay.classList.remove('active');
                 document.body.style.overflow = '';
+                clearInterval(storyTimer); // Stop the loop
+                
                 const fill = document.querySelector('.story-progress-bar .fill');
                 if (fill) fill.style.animation = 'none';
             }
 
-            function nextStory() {
-                if (storyCurrentIndex < totalInnerPages - 1) {
-                    storyCurrentIndex++;
-                    updateStoryContent(storyCurrentIndex);
+            function manualStoryNav(direction) {
+                clearInterval(storyTimer); // Reset timer on manual click
+                
+                if (direction === 'next') {
+                    if (storyCurrentIndex >= totalInnerPages - 1) {
+                        storyCurrentIndex = 0;
+                    } else {
+                        storyCurrentIndex++;
+                    }
                 } else {
-                    closeStory(); // Close if it's the last photo
+                    if (storyCurrentIndex <= 0) {
+                        storyCurrentIndex = totalInnerPages - 1;
+                    } else {
+                        storyCurrentIndex--;
+                    }
                 }
-            }
-
-            function prevStory() {
-                if (storyCurrentIndex > 0) {
-                    storyCurrentIndex--;
-                    updateStoryContent(storyCurrentIndex);
-                }
+                
+                updateStoryContent(storyCurrentIndex);
+                startStoryTimer(); // Restart the 5-second loop
             }
 
             // Click listeners for story zones
-            storyNextZone.addEventListener('click', nextStory);
-            storyPrevZone.addEventListener('click', prevStory);
+            storyNextZone.addEventListener('click', () => manualStoryNav('next'));
+            storyPrevZone.addEventListener('click', () => manualStoryNav('prev'));
+            
             storyClose.addEventListener('click', (e) => {
                 e.stopPropagation();
                 closeStory();
@@ -1624,8 +1649,8 @@
                     closeStory();
                 }
                 if (storyOverlay.classList.contains('active')) {
-                    if (e.key === 'ArrowRight') nextStory();
-                    if (e.key === 'ArrowLeft') prevStory();
+                    if (e.key === 'ArrowRight') manualStoryNav('next');
+                    if (e.key === 'ArrowLeft') manualStoryNav('prev');
                 }
             });
 
@@ -1645,10 +1670,10 @@
             function handleSwipe() {
                 const swipeThreshold = 40;
                 if (touchEndX < touchStartX - swipeThreshold) {
-                    nextStory(); // Swiped Left
+                    manualStoryNav('next'); // Swiped Left
                 }
                 if (touchEndX > touchStartX + swipeThreshold) {
-                    prevStory(); // Swiped Right
+                    manualStoryNav('prev'); // Swiped Right
                 }
             }
 
